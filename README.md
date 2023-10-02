@@ -3,7 +3,9 @@ Repositorio de preentrega No. 2 - CODERHOUSE Javascript
 
 // READ FIRST:
 
-** CAMBIOS Y MEJORAS RESPECTO DE PROYECTO DE LA PREENTREGA No. 1 **
+                                            NOTAS DE LA PREENTREGA No. 2
+
+                        ** CAMBIOS Y MEJORAS RESPECTO DE PROYECTO DE LA PREENTREGA No. 1 **
 
 1. Se integró una nueva funcionalidad al programa que consiste en decirle al usuario cuántos de los casos ingresados en su consulta corresponden a una de las tres categorías de procesos judiciales (mínima, menor o mayor cuantía)
 
@@ -17,9 +19,18 @@ Repositorio de preentrega No. 2 - CODERHOUSE Javascript
     1.3. Cuando se termina de ingresar la información y de formar el array, los datos se filtran y se forma un array que corresponda a cada categoría (mínima, menor o mayor cuantía).
     1.4. Luego se imprime el resultado de la filtración indicando cuántos casos resultaron de la consulta.
 
+2. Se modificó el archivo html con las preguntas propias del programa.
+
+3. Se dejaron listos los archivos SASS del proyecto, pues se borró el código sobrante que venía del curso de    Desarrollo Web.
+
+
+                                            NOTAS DE LA PREENTREGA No. 1
+
+
 ** CALCULADORA PRA USOS JUDICIALES - DEFINICIÓN DE LA COMPETENCIA PARA PROCESOS DE PERTENENCIA EN COLOMBIA AÑO 2023 **
 
 Explicación del programa:
+
 1. El procesos judiciale de pertenencia juzga si alguien puede ser propietario de un inmueble sólo por el hecho de ocuparlo.
 2. La "competencia judicial" es definir a cual Juez al que le corresponde decidir el asunto, pues hay muchos tipos de jueces.
 3. La forma de definir esta competencia depende del valor del inmueble que se quiere adquirir. 
@@ -27,12 +38,7 @@ Explicación del programa:
 4. Puede ser que no se quiera adquirir la totalidad del inmueble (100%), sino que se se quiera otro porcentaje.
 5. Esta calculadora determina el valor de la cuantía según el porcentaje que se pretenda adquirir.
 6. El valor puede tener tres categorías: 
+
                   1. Ser inferior a $46.400.000 COP --> Juzgado Municipal o de Pequeñas Causas
                   2. Estar entre $46.400.000 COP y $174.000.000 COP --> Juzgado Municipal
                  3. Ser mayor a $174.000.000 COP --> Juzgado del Circuito
-
-
-// Nuevo contexto del proyecto:
-// Cálculo de copmpetencia de procesos de pertenencia:
-// 1. De varios inmuebles al tiempo porque es en el contexto de una firma de abogados grande.
-// 2. Sirve para sacar estadísticas de los procesos (urbano / rural) (cuantía)
