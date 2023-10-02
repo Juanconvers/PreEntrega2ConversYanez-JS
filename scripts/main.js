@@ -10,10 +10,8 @@
 let nombrePredio = "";
 let avaluo = 0;
 let porcentaje = 0;
-let clasificacion = "";
+let tipo = "";
 let caso = {};
-
-
 
 // Definición de la función que realiza el cálculo de la cuantía:
 
@@ -24,7 +22,10 @@ function calcularCuantia (avaluo, porcentaje) {
   return NaN;
 }
 
-// Introducción
+
+
+
+// Introducción al programa
 
 alert("Bienvenido(a) - Este servicio le ayudará a saber a cuál tipo de juzgado le corresponde tramitar su proceso de pertenencia en Colombia.");
 
@@ -34,58 +35,99 @@ let respuestaContinuar = prompt("¿Desea realizar un cálculo de competencia jud
 
 const listaCasos = [];
 
-
 //  Ciclo de introducción de datos y cálculo de cuantía 
 
 while (respuestaContinuar.toUpperCase() === "SI") {
   alert("Por favor responda las siguientes preguntas:");
  
-// Instanciación del objeto que correponde a cada caso que se consulta
+// Solicitud de información al usuario.
 
-    caso = {
-    nombrePredio: prompt("¿Cuál es nombre del predio a reclamar? O indique el nombre con que se conoce su caso"),
-    avaluo: parseFloat(prompt("¿Cuál es avalúo catastral del inmueble que pretende o el de mayor extensión? Escriba el valor en pesos colombianos. Use números, sin puntos, comas u otros signos")),
-    porcentaje: parseFloat (prompt("¿Cuál es el porcentaje que ocupa el predio que usted pretende en posesión? Escriba un valor del 0 al 100")),
-    tipo: prompt("¿El predio a reclamar es urbano o rural?")
-    }
+    nombrePredio = prompt("¿Cuál es nombre del predio a reclamar? O indique el nombre con que se conoce su caso"),
+    avaluo = parseFloat(prompt("¿Cuál es avalúo catastral del inmueble que pretende o el de mayor extensión? Escriba el valor en pesos colombianos. Use números, sin puntos, comas u otros signos")),
+    porcentaje = parseFloat (prompt("¿Cuál es el porcentaje que ocupa el predio que usted pretende en posesión? Escriba un valor del 0 al 100")),
+    tipo = prompt("¿El predio a reclamar es urbano o rural?")
+  
 
-    listaCasos.push(caso);
+// Cálculo de las cuantías que definen la competencia judicial. (*Con cada resultado solicité impresión de los resultados numéricos en la consola para verificar el funcionamiento de la función.)
 
-
-    console.log(listaCasos); 
-
-
-// Con cada resultado solicité impresión de los resultados numéricos en la consola para verificar el funcionamiento de la función.
-
-let cuantia = calcularCuantia (caso.avaluo, caso.porcentaje)
+let cuantia = calcularCuantia (avaluo, porcentaje)
 
     if (cuantia !== NaN) {
       if (cuantia <= 46400000){
-            alert("Su proceso se cataloga de Mínima Cuantía - Le corresponde radicar el proceso en un Juzgado Municipal o de Pequeñas Causas")
-            console.log("Avalúo catastral ingresado: $" + caso.avaluo + ". Porcentaje sobre el avalúo:" + caso.porcentaje + "% . Cuantía de la pretensión: $" + cuantia );
+            alert("El proceso llamado " + nombrePredio + 
+            " se cataloga de Mínima Cuantía - Le corresponde radicar el proceso en un Juzgado Municipal o de Pequeñas Causas")
+            console.log("Avalúo catastral ingresado: $" + avaluo + ". Porcentaje sobre el avalúo:" + porcentaje + "% . Cuantía de la pretensión: $" + cuantia );
           } else if (46400000 < cuantia && cuantia <= 174000000){
-            alert("Su proceso se cataloga de Menor Cuantía - Le corresponde radicar el proceso en un Juzgado Municipal");
-            console.log("Avalúo catastral ingresado: $" + caso.avaluo + ". Porcentaje sobre el avalúo:" + caso.porcentaje + "% . Cuantía de la pretensión: $" + cuantia ); 
+            alert("El proceso llamado " + nombrePredio + 
+            " se cataloga de Menor Cuantía - Le corresponde radicar el proceso en un Juzgado Municipal");
+            console.log("Avalúo catastral ingresado: $" + avaluo + ". Porcentaje sobre el avalúo:" + porcentaje + "% . Cuantía de la pretensión: $" + cuantia ); 
           } else if (174000000 < cuantia){
-            alert("Su proceso se cataloga de Mayor Cuantía - Le corresponde radicar el proceso en un Juzgado del Circuito");
-            console.log("Avalúo catastral ingresado: $" + caso.avaluo + ". Porcentaje sobre el avalúo:" + caso.porcentaje + "% . Cuantía de la pretensión: $" + cuantia );
+            alert("El proceso llamado " + nombrePredio + 
+            " se cataloga de Mayor Cuantía - Le corresponde radicar el proceso en un Juzgado del Circuito");
+            console.log("Avalúo catastral ingresado: $" + avaluo + ". Porcentaje sobre el avalúo:" + porcentaje + "% . Cuantía de la pretensión: $" + cuantia );
           } else {
             alert("No se puede procesar la solicitud"); 
           }
     }
 
-    //     //Declaraciòn de array vacío y variable para determinar cantidad
-    // const listaCasos = [];
-    //    //Empleo de do...while para cargar nombres en el array por prompt()
-   
-    // listaCasos.push(Caso);
-    // console.log(listaCasos);
-    
+// Instanciación del objeto que hará parte del array.
 
-    // Opción para realizar un nuevo cálculo de jurisdicción o terminar.
+    caso = {
+      nombrePredio,
+      cuantia,
+      tipo
+      }
+
+// Método que agrega el nuevo objeto al array.
+
+    listaCasos.push(caso);
+    
+// Se imprime el array modificado en la consola.
+
+    console.log(listaCasos);
+    
+// Opción para realizar un nuevo cálculo de jurisdicción o terminar.
+
     respuestaContinuar = prompt("¿Desea realizar otro cálculo de competencia judicial? Responda Si / No"); 
-}
+
+} 
+// Fin del bucle
+
+
+console.log(listaCasos.length);
+
+const urbanos = listaCasos.filter(x => x.tipo.toUpperCase() === "URBANO")
+const estadisticaUrbanos = (urbanos.lenght * 100) / listaCasos.length;
+
+const rurales = listaCasos.filter(x => x.tipo.toUpperCase() === "RURAL")
+
+console.log(urbanos);
+
+console.log(estadisticaUrbanos);
+
+
+
 alert("Gracias por elegirnos");
+
+
+
+
+
+// const resultadoTipo = listaCasos.filter(function(caso) {
+//   caso.tipo.toUpperCase() === "URBANO";
+// })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
